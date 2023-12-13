@@ -24,7 +24,7 @@ async function getDomainInfo(domain: string): Promise<URLInfo[]> {
                     domainInfo.push({ text, characters, url: absoluteUrl });
                 } catch (error) {
                     console.error(`Error fetching or processing data for ${absoluteUrl}:`, error);
-                    throw error
+                    // throw error
                 }
             }
         }).get() as Promise<void>[]; // Get the promises array
