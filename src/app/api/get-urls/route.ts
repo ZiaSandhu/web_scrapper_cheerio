@@ -34,7 +34,7 @@ async function getDomainInfo(domain: string): Promise<URLInfo[]> {
         return domainInfo;
     } catch (error) {
         console.error(`Error fetching data for ${domain}:`, error);
-        throw error; // Re-throw the error to propagate it further
+        throw error;
     }
 }
 

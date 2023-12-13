@@ -3,6 +3,8 @@ import { FC, useState } from 'react'
 import DataTable from '@/components/DataTable'
 import URLInput from '@/components/URLInput'
 import SaveFile from './SaveFile'
+      
+import { Toaster } from "react-hot-toast";
 
 interface MainComponentProps {
   
@@ -22,6 +24,8 @@ const MainComponent: FC<MainComponentProps> = ({}) => {
       <URLInput domain={domain} setDomain={setDomain} setUrls={setUrls} />
       <DataTable data={urls} setData={setUrls}/>
       <SaveFile urls={urls} domain={domain} />
+      <Toaster position="top-center" reverseOrder={false} />
+
     </>
   );
 }

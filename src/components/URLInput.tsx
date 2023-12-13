@@ -6,6 +6,7 @@ import axios from "axios";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import toast from "react-hot-toast";
 
 interface URLInputProps {
   domain: string;
@@ -23,8 +24,10 @@ const URLInput: FC<URLInputProps> = ({ domain, setDomain, setUrls }) => {
         url: domain,
       });
       setUrls(res.data.domainInfo);
+      toast.success("Successfully fetched urls.")
     } catch (error) {
-      console.error(error);
+      console.log("🚀 ~ file: URLInput.tsx:29 ~ fetchUrls ~ error:", error)
+      // toast.error()
     } finally {
       setDisabled(false);
     }
