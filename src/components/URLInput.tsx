@@ -26,7 +26,6 @@ const URLInput: FC<URLInputProps> = ({ domain, setDomain, setUrls }) => {
       setUrls(res.data.domainInfo);
       toast.success("Successfully fetched urls.")
     } catch (error) {
-      console.log("🚀 ~ file: URLInput.tsx:29 ~ fetchUrls ~ error:", error)
       toast.error("Something went wrong")
     } finally {
       setDisabled(false);

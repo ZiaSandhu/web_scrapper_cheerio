@@ -14,7 +14,7 @@ interface SaveFileProps {
 
 const SaveFile: FC<SaveFileProps> = ({urls, domain}) => {
 
-    const [progress, setProgress] = useState<number>(10)
+    const [progress, setProgress] = useState<number>(0)
 
 
     const saveFile = async () => {
