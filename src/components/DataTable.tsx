@@ -261,7 +261,7 @@ const DataTable: FC<DataTableProps> = ({ data, setData }) => {
         </div>
 
         <div className="flex-1 pl-10">
-          <Button onClick={()=>filterData(rowSelection)}>
+          <Button onClick={()=>filterData(rowSelection)} >
             Delete Selected Pages{" "}
           </Button>
         </div>
