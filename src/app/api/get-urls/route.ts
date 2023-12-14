@@ -20,7 +20,6 @@ async function getDomainInfo(domain: string): Promise<URLInfo[]> {
                     const $ = load(response.data);
                     const text = $('body').text();
                     const characters = text.length;
-                    // const trimmed_text = text.substring(0, 50) + "...";
                     domainInfo.push({ text, characters, url: absoluteUrl });
                 } catch (error) {
                     console.error(`Error fetching or processing data for ${absoluteUrl}:`, error);
