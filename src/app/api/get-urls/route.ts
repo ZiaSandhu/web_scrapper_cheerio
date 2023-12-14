@@ -1,6 +1,7 @@
 import axios from "axios";
 import { load, CheerioAPI } from 'cheerio';
 
+export const maxDuration = 300
 
 async function getDomainInfo(domain: string): Promise<URLInfo[]> {
     try {
