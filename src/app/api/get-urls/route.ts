@@ -1,7 +1,8 @@
 import axios from "axios";
 import { load, CheerioAPI } from 'cheerio';
 
-// export const maxDuration = 120
+export const maxDuration = 120; // 5 seconds
+export const dynamic = 'force-dynamic';
 
 async function getDomainInfo(domain: string): Promise<URLInfo[]> {
     try {
@@ -10,7 +11,8 @@ async function getDomainInfo(domain: string): Promise<URLInfo[]> {
 
         const domainInfo: URLInfo[] = [];
 
-        const promises = $('a[href]').map(async (index, element) => {
+
+        const promises =  $('a[href]').map(async (index, element) => {
             let path = $(element).attr('href') as string;
 
             if (path && !path.startsWith('#') && !path.startsWith('http')) {
@@ -27,7 +29,7 @@ async function getDomainInfo(domain: string): Promise<URLInfo[]> {
                     throw error
                 }
             }
-        }).get() as Promise<void>[]; // Get the promises array
+        }).toArray() as Promise<void>[]; // Get the promises array
 
         await Promise.all(promises);
 
@@ -37,7 +39,6 @@ async function getDomainInfo(domain: string): Promise<URLInfo[]> {
         throw error;
     }
 }
-
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -51,3 +52,6 @@ export async function POST(req: Request) {
         return new Response(`Something went wrong`, { status: 409 });
     }
 }
+
+
+

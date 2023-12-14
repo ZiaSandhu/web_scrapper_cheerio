@@ -127,8 +127,9 @@ const DataTable: FC<DataTableProps> = ({ data, setData }) => {
   );
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
-
+  const [rowSelection, setRowSelection] = React.useState<{}>({});
+  const [pageSize,setPageSize] = React.useState<number>(10)
+  const [currentPage,setCurrentPage] = React.useState<number>(1)
   
   
 
@@ -136,7 +137,7 @@ const DataTable: FC<DataTableProps> = ({ data, setData }) => {
     data,
     columns,
     onSortingChange: setSorting,
-    // onColumnFiltersChange: setColumnFilters,
+    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -145,11 +146,18 @@ const DataTable: FC<DataTableProps> = ({ data, setData }) => {
     onRowSelectionChange: setRowSelection,
     state: {
       sorting,
-      // columnFilters,
+      columnFilters,
       columnVisibility,
       rowSelection,
     },
+    onPaginationChange:pagination
+
   });
+
+  function pagination(states: any){
+  console.log("🚀 ~ file: DataTable.tsx:158 ~ pagination ~ states:", states)
+
+  }
 
   function filterData(rowSelection:{}) {
     const indicesToExclude = Object.keys(rowSelection).map(Number);
