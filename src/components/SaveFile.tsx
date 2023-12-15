@@ -23,7 +23,7 @@ const SaveFile: FC<SaveFileProps> = ({urls, domain}) => {
 
         const zip = new JSZip();
     
-        const url = new URL("https://dorvn.com");
+        const url = new URL(domain);
         const domainParts = url.hostname.split('.');
         const subdomain = domainParts[0];
 

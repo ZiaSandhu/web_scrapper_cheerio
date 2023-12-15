@@ -24,9 +24,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -128,9 +125,7 @@ const DataTable: FC<DataTableProps> = ({ data, setData }) => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState<{}>({});
-  const [pageSize,setPageSize] = React.useState<number>(10)
-  const [currentPage,setCurrentPage] = React.useState<number>(1)
-  
+ 
   
 
   const table = useReactTable({
@@ -150,14 +145,8 @@ const DataTable: FC<DataTableProps> = ({ data, setData }) => {
       columnVisibility,
       rowSelection,
     },
-    onPaginationChange:pagination
-
   });
 
-  function pagination(states: any){
-  console.log("🚀 ~ file: DataTable.tsx:158 ~ pagination ~ states:", states)
-
-  }
 
   function filterData(rowSelection:{}) {
     const indicesToExclude = Object.keys(rowSelection).map(Number);
