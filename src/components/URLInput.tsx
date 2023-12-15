@@ -13,7 +13,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 interface URLInputProps {
   domain: string;
   setDomain: (newValue: string) => void;
-  setUrls: (newValue: []) => void;
+  setUrls: (newValue: string[]) => void;
   setDomainInfo: (newValue: URLInfo[]) => void;
 }
 
@@ -46,16 +46,20 @@ const URLInput: FC<URLInputProps> = ({
         }
       );
       let links = res.data.links;
-      setUrls(links);
+      let uniqueLinksSet: Set<string> = new Set(links);
+      let uniqueLinksArray: string[] = Array.from(uniqueLinksSet);
+      
+      
+      setUrls(uniqueLinksArray);
 
       let data: URLInfo[] = [];
 
-      let totalLinks = links.length;
+      let totalLinks = uniqueLinksArray.length;
 
       setTotal(totalLinks)
 
       for (let index = 0; index < totalLinks; index += 5) {
-        const batch = links.slice(index, index + 5);
+        const batch = uniqueLinksArray.slice(index, index + 5);
 
         let info = await axios.post(
           "/api/get-urls-info",
