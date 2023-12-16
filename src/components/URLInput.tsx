@@ -29,7 +29,6 @@ const URLInput: FC<URLInputProps> = ({
     setDomainInfo([])
     setDisabled(true);
     setTotal(0)
-    setUrls([])
     try {
       let res = await axios.post(
         "/api/get-urls",
