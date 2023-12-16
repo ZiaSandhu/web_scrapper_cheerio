@@ -13,14 +13,12 @@ import ProgressBar from "@ramonak/react-progress-bar";
 interface URLInputProps {
   domain: string;
   setDomain: (newValue: string) => void;
-  setUrls: (newValue: string[]) => void;
   setDomainInfo: (newValue: URLInfo[]) => void;
 }
 
 const URLInput: FC<URLInputProps> = ({
   domain,
   setDomain,
-  setUrls,
   setDomainInfo,
 }) => {
   const [disabled, setDisabled] = useState<boolean>(false);
@@ -41,7 +39,6 @@ const URLInput: FC<URLInputProps> = ({
         {
           headers: {
             "Content-Type": "application/json",
-            // Add other headers if needed
           },
         }
       );
@@ -50,8 +47,6 @@ const URLInput: FC<URLInputProps> = ({
       let uniqueLinksArray: string[] = Array.from(uniqueLinksSet);
       
       
-      setUrls(uniqueLinksArray);
-
       let data: URLInfo[] = [];
 
       let totalLinks = uniqueLinksArray.length;

@@ -14,7 +14,6 @@ interface MainComponentProps {
 const MainComponent: FC<MainComponentProps> = ({}) => {
   
     const [domain, setDomain] = useState<string>('')
-    const [links,setLinks]= useState<string[]>([])
     
     const [domainInfo,setDomainInfo] = useState<URLInfo[]>([])
     
@@ -22,7 +21,7 @@ const MainComponent: FC<MainComponentProps> = ({}) => {
   return (
     <>
       <h1 className="text-center text-3xl">Web Scrapping Using Cheerio</h1>
-      <URLInput domain={domain} setDomain={setDomain} setUrls={setLinks} setDomainInfo={setDomainInfo}/>
+      <URLInput domain={domain} setDomain={setDomain} setDomainInfo={setDomainInfo}/>
       <DataTable data={domainInfo} setData={setDomainInfo}/>
       <SaveFile urls={domainInfo} domain={domain} />
       <Toaster position="top-center" reverseOrder={false} />
